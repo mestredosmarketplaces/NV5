@@ -1,0 +1,32 @@
+{
+  "name": "mestre-dos-marketplaces-reuso",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./build/index.js",
+  "types": "./build/index.d.ts",
+  "files": [
+    "build/**/*"
+  ],
+  "scripts": {
+    "clean": "rd /s /q build",
+    "build": "npm run clean && tsc",
+    "pub": "git add . && git commit -m \"Updates\" && npm version patch && npm run build && npm publish"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-iam": "^3.370.0",
+    "@types/aws-sdk": "^2.7.0",
+    "@types/uuid": "^9.0.2",
+    "aws-sdk": "^2.1415.0",
+    "mongoose": "^7.3.4",
+    "mongoose-update-if-current": "^1.4.0",
+    "uuid": "^9.0.0",
+    "winston": "^3.10.0"
+  },
+  "devDependencies": {
+    "del-cli": "^5.0.0",
+    "typescript": "^5.0.4"
+  }
+}
