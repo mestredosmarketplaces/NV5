@@ -11,9 +11,11 @@ interface SetSwaggerDoc {
             email: string;
         };
     };
-    servers: {
-        url: string;
-    };
+    servers: [
+        {
+            url: string;
+        }
+    ];
 }
 export default class SetupSwagger {
     private swaggerDefinition;

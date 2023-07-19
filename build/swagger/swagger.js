@@ -7,7 +7,8 @@ const swagger_jsdoc_1 = __importDefault(require("swagger-jsdoc"));
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 class SetupSwagger {
     constructor(swaggerDefitionObj) {
-        this.swaggerDefinition = swaggerDefitionObj;
+        const swaggerObj = Object.assign({ openapi: '3.0.0', explorer: true }, swaggerDefitionObj);
+        this.swaggerDefinition = swaggerObj;
         this.options = Object.assign(Object.assign({}, this.swaggerDefinition), { apis: ['./src/routes/components-openapi/*.ts',
                 './src/routes/components-openapi/schemas/*.ts',
                 './src/routes/*.ts'

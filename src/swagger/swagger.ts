@@ -30,6 +30,8 @@ export default class SetupSwagger {
 
   constructor(swaggerDefitionObj: SetSwaggerDoc) {
 
+    console.log(swaggerDefitionObj);
+
     const swaggerObj = {
       openapi: '3.0.0',
       explorer: true,
@@ -37,6 +39,9 @@ export default class SetupSwagger {
     };
 
     this.swaggerDefinition = swaggerObj;
+
+    console.log(this.swaggerDefinition);
+
     this.options = {
       ...this.swaggerDefinition,
       apis: ['./src/routes/components-openapi/*.ts', 
@@ -44,6 +49,8 @@ export default class SetupSwagger {
       './src/routes/*.ts'
     ], // Atualize o caminho correto para os seus arquivos de rotas e arquivos JSON do Swagger
     };
+
+    console.log(this.options);
     this.swaggerSpec = swaggerJSDoc(this.options);
   };
 
