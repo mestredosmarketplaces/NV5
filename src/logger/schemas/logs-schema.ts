@@ -223,6 +223,10 @@ LoggerSchema.statics.searchLogs = async function (options: {
   return responseBody;
 };
 
+if(!process.env.MONGO_URI_LOGGER_MANAGER || !process.env.APP_SCENARIO_ENVIRONMENT) {
+  throw new Error('You should define the environment variables: MONGO_URI_LOGGER_MANAGER and APP_SCENARIO_ENVIRONMENT');
+}
+
 const newMongoDBUrl = `${process.env.MONGO_URI_LOGGER_MANAGER}/${process.env.APP_SCENARIO_ENVIRONMENT}?retryWrites=true&w=majority`;
 const newMongoose = mongoose.createConnection(newMongoDBUrl);
 
