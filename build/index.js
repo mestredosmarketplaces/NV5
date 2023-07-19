@@ -16,3 +16,4 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./aws-services/aws"), exports);
 __exportStar(require("./logger/logger"), exports);
+console.log('Teste');
