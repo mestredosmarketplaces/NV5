@@ -26,7 +26,7 @@ export default class SetupSwagger {
   private options: SwaggerOptions;
   private swaggerSpec: any;
 
-  constructor(private swaggerDefitionObj: SetSwaggerDoc) {
+  constructor(swaggerDefitionObj: SetSwaggerDoc) {
     this.swaggerDefinition = swaggerDefitionObj;
     this.options = {
       ...this.swaggerDefinition,
