@@ -1,6 +1,7 @@
 import express from 'express';
 import swaggerJSDoc  from 'swagger-jsdoc';
 import { SwaggerOptions } from 'swagger-ui-express';
+import { SwaggerDefinition } from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 
 interface SetSwaggerDoc {
@@ -15,19 +16,27 @@ interface SetSwaggerDoc {
       email: string;
     }
   },
-  servers: {
-    url: string;
-  }
+  servers: [  
+    {url: string;}
+  ]
+
 }
 
 export default class SetupSwagger {
   
-  private swaggerDefinition: SetSwaggerDoc;
+  private swaggerDefinition: SwaggerDefinition;
   private options: SwaggerOptions;
   private swaggerSpec: any;
 
   constructor(swaggerDefitionObj: SetSwaggerDoc) {
-    this.swaggerDefinition = swaggerDefitionObj;
+
+    const swaggerObj = {
+      openapi: '3.0.0',
+      explorer: true,
+      ...swaggerDefitionObj
+    };
+
+    this.swaggerDefinition = swaggerObj;
     this.options = {
       ...this.swaggerDefinition,
       apis: ['./src/routes/components-openapi/*.ts', 

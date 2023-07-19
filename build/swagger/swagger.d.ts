@@ -16,7 +16,6 @@ interface SetSwaggerDoc {
     };
 }
 export default class SetupSwagger {
-    private swaggerDefitionObj;
     private swaggerDefinition;
     private options;
     private swaggerSpec;
