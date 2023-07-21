@@ -32,29 +32,32 @@ export default class SetupSwagger {
 
     console.log(swaggerDefitionObj);
 
-    const swaggerObj = {
+    this.swaggerDefinition = {
       openapi: '3.0.0',
       explorer: true,
       ...swaggerDefitionObj
     };
 
-    this.swaggerDefinition = swaggerObj;
-
-    console.log(this.swaggerDefinition);
+    console.log('Esse é o swagger Definition', this.swaggerDefinition);
 
     this.options = {
-      ...this.swaggerDefinition,
+      swaggerDefinition: this.swaggerDefinition,
       apis: ['./src/routes/components-openapi/*.ts', 
       './src/routes/components-openapi/schemas/*.ts', 
       './src/routes/*.ts'
     ], // Atualize o caminho correto para os seus arquivos de rotas e arquivos JSON do Swagger
     };
 
-    console.log(this.options);
+    console.log('Esse é o options', this.options);
     this.swaggerSpec = swaggerJSDoc(this.options);
+
+    console.log('Esse é o swagger Spec', this.swaggerSpec);
   };
 
   setupSwagger(app: express.Application, route: string) {
+    console.log(app);
+    console.log(route);
+    console.log(this.swaggerSpec);
     app.use(route, swaggerUi.serve, swaggerUi.setup(this.swaggerSpec));
   }
 
