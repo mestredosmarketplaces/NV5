@@ -38,8 +38,6 @@ export default class SetupSwagger {
       ...swaggerDefitionObj
     };
 
-    console.log('Esse é o swagger Definition', this.swaggerDefinition);
-
     this.options = {
       swaggerDefinition: this.swaggerDefinition,
       apis: ['./src/routes/components-openapi/*.ts', 
@@ -48,10 +46,8 @@ export default class SetupSwagger {
     ], // Atualize o caminho correto para os seus arquivos de rotas e arquivos JSON do Swagger
     };
 
-    console.log('Esse é o options', this.options);
     this.swaggerSpec = swaggerJSDoc(this.options);
 
-    console.log('Esse é o swagger Spec', this.swaggerSpec);
   };
 
   setupSwagger(app: express.Application, route: string) {
