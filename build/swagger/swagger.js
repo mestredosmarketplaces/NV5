@@ -9,7 +9,6 @@ class SetupSwagger {
     constructor(swaggerDefitionObj) {
         console.log(swaggerDefitionObj);
         this.swaggerDefinition = Object.assign({ openapi: '3.0.0', explorer: true }, swaggerDefitionObj);
-        console.log('Esse é o swagger Definition', this.swaggerDefinition);
         this.options = {
             swaggerDefinition: this.swaggerDefinition,
             apis: ['./src/routes/components-openapi/*.ts',
@@ -17,9 +16,7 @@ class SetupSwagger {
                 './src/routes/*.ts'
             ], // Atualize o caminho correto para os seus arquivos de rotas e arquivos JSON do Swagger
         };
-        console.log('Esse é o options', this.options);
         this.swaggerSpec = (0, swagger_jsdoc_1.default)(this.options);
-        console.log('Esse é o swagger Spec', this.swaggerSpec);
     }
     ;
     setupSwagger(app, route) {

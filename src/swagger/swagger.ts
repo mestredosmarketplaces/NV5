@@ -29,9 +29,6 @@ export default class SetupSwagger {
   private swaggerSpec: any;
 
   constructor(swaggerDefitionObj: SetSwaggerDoc) {
-
-    console.log(swaggerDefitionObj);
-
     this.swaggerDefinition = {
       openapi: '3.0.0',
       explorer: true,
@@ -51,9 +48,6 @@ export default class SetupSwagger {
   };
 
   setupSwagger(app: express.Application, route: string) {
-    console.log(app);
-    console.log(route);
-    console.log(this.swaggerSpec);
     app.use(route, swaggerUi.serve, swaggerUi.setup(this.swaggerSpec));
   }
 
