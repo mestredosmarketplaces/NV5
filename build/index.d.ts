@@ -4,3 +4,4 @@ export { Logger as LoggerDB } from './logger/schemas/logs-schema';
 export { default as SetupSwagger } from './swagger/swagger';
 export { IAMPolicyDocument } from './aws-services/aws';
 export { filterRequestBody } from './utils/filterRequestBody';
+export { handleRequestHeaders } from './middlewares/req-parse';
