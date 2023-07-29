@@ -178,7 +178,7 @@ export default class AWSServices {
       };
   
       const result = await this.sqs.sendMessage(params).promise();
-      logger.info('SQS policy associated successfully', { requestResponse: result });
+      logger.info('SQS message successfully sent', { requestBody: messageBody, requestResponse: result });
       return result;
   
     } catch(error) {
@@ -212,7 +212,7 @@ export default class AWSServices {
           messageBody, receiptHandle
         };
 
-        logger.info('Received a message successfully', { requestResponse: result });
+        logger.info('Received a message successfully', { requestBody: result });
   
         return response;
       } else {
