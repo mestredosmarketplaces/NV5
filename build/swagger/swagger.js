@@ -7,7 +7,6 @@ const swagger_jsdoc_1 = __importDefault(require("swagger-jsdoc"));
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 class SetupSwagger {
     constructor(swaggerDefitionObj) {
-        console.log(swaggerDefitionObj);
         this.swaggerDefinition = Object.assign({ openapi: '3.0.0', explorer: true }, swaggerDefitionObj);
         this.options = {
             swaggerDefinition: this.swaggerDefinition,
@@ -20,9 +19,6 @@ class SetupSwagger {
     }
     ;
     setupSwagger(app, route) {
-        console.log(app);
-        console.log(route);
-        console.log(this.swaggerSpec);
         app.use(route, swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(this.swaggerSpec));
     }
 }
