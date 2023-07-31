@@ -172,7 +172,7 @@ class AWSServices {
                     DelaySeconds: visibilityTimeout // Definindo o tempo de visibilidade da mensagem (em segundos)
                 };
                 const result = yield this.sqs.sendMessage(params).promise();
-                logger_1.default.info('SQS policy associated successfully', { requestResponse: result });
+                logger_1.default.info('SQS message successfully sent', { requestBody: messageBody, requestResponse: result });
                 return result;
             }
             catch (error) {
@@ -203,7 +203,7 @@ class AWSServices {
                     const response = {
                         messageBody, receiptHandle
                     };
-                    logger_1.default.info('Received a message successfully', { requestResponse: result });
+                    logger_1.default.info('Received a message successfully', { requestBody: result });
                     return response;
                 }
                 else {
