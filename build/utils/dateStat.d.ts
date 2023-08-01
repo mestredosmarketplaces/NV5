@@ -1,1 +1,1 @@
-export declare const dateStat: (offset?: number) => number;
+export declare const dateStat: (offset?: number) => string;

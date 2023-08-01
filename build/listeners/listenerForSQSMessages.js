@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.startSQSListener = void 0;
 const logger_1 = __importDefault(require("../logger/logger"));
 const aws_1 = __importDefault(require("../aws-services/aws"));
+const dateStat_1 = require("../utils/dateStat");
 function startSQSListener(queueUrl, region, func, interval = 60000) {
     return __awaiter(this, void 0, void 0, function* () {
         let isListening = true;
@@ -30,19 +31,7 @@ function startSQSListener(queueUrl, region, func, interval = 60000) {
         });
         while (isListening) {
             try {
-                const date = new Date();
-                date.setHours(date.getHours() - 3 + date.getTimezoneOffset() / 60);
-                // Format the date in the desired format
-                const formattedDate = date.toLocaleString('en-US', {
-                    weekday: 'short',
-                    month: 'short',
-                    day: 'numeric',
-                    year: 'numeric',
-                    hour: 'numeric',
-                    minute: 'numeric',
-                    second: 'numeric'
-                });
-                logger_1.default.info(`Checking for SQS messages at ${formattedDate}`);
+                logger_1.default.info(`Checking for SQS messages at ${(0, dateStat_1.dateStat)()}`);
                 const result = yield awsServices.receiveSQSMessage(queueUrl);
                 if (!result) {
                     logger_1.default.info('No messages found. Listening...');
