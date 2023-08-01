@@ -1,5 +1,6 @@
 import logger from '../logger/logger';
 import AWSServices from '../aws-services/aws';
+import { dateStat } from '../utils/dateStat';
 
 interface ListenerFunction {
   (message: any): Promise<void>;
@@ -21,21 +22,7 @@ export async function startSQSListener(queueUrl: string, region: string, func: L
 
   while (isListening) {
     try {
-      const date = new Date();
-      date.setHours(date.getHours() - 3 + date.getTimezoneOffset() / 60);
-
-      // Format the date in the desired format
-      const formattedDate = date.toLocaleString('en-US', {
-        weekday: 'short',
-        month: 'short',
-        day: 'numeric',
-        year: 'numeric',
-        hour: 'numeric',
-        minute: 'numeric',
-        second: 'numeric'
-      });
-
-      logger.info(`Checking for SQS messages at ${formattedDate}`);
+      logger.info(`Checking for SQS messages at ${dateStat()}`);
 
       const result = await awsServices.receiveSQSMessage(queueUrl);
 
